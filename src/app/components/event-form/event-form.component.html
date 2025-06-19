@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <h2>{{ isEditMode ? 'Editar' : 'Criar' }} Evento</h2>
+
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Título</label>
+      <input type="text" id="title" formControlName="titulo" class="form-control"
+        [class.is-invalid]="eventForm.get('titulo')?.invalid && (eventForm.get('titulo')?.dirty || eventForm.get('titulo')?.touched)">
+      <div *ngIf="eventForm.get('titulo')?.invalid && (eventForm.get('titulo')?.dirty || eventForm.get('titulo')?.touched)" class="invalid-feedback">
+        <div *ngIf="eventForm.get('titulo')?.errors?.['required']">O título é obrigatório.</div>
+        <div *ngIf="eventForm.get('titulo')?.errors?.['minlength']">O título deve ter no mínimo 5 caracteres.</div>
+        <div *ngIf="eventForm.get('titulo')?.errors?.['maxlength']">O título deve ter no máximo 100 caracteres.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Descrição</label>
+      <textarea id="description" formControlName="descricao" class="form-control" rows="3"
+        [class.is-invalid]="eventForm.get('descricao')?.invalid && (eventForm.get('descricao')?.dirty || eventForm.get('descricao')?.touched)"></textarea>
+      <div *ngIf="eventForm.get('descricao')?.invalid && (eventForm.get('descricao')?.dirty || eventForm.get('descricao')?.touched)" class="invalid-feedback">
+        <div *ngIf="eventForm.get('descricao')?.errors?.['required']">A descrição é obrigatória.</div>
+        <div *ngIf="eventForm.get('descricao')?.errors?.['minlength']">A descrição deve ter no mínimo 10 caracteres.</div>
+        <div *ngIf="eventForm.get('descricao')?.errors?.['maxlength']">A descrição deve ter no máximo 1000 caracteres.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="dateTime" class="form-label">Data e Hora do Evento</label>
+      <input type="datetime-local" id="dateTime" formControlName="dataHora" class="form-control"
+        [class.is-invalid]="eventForm.get('dataHora')?.invalid && (eventForm.get('dataHora')?.dirty || eventForm.get('dataHora')?.touched)">
+      <div *ngIf="eventForm.get('dataHora')?.invalid && (eventForm.get('dataHora')?.dirty || eventForm.get('dataHora')?.touched)" class="invalid-feedback">
+        <div *ngIf="eventForm.get('dataHora')?.errors?.['required']">A data e hora são obrigatórias.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Local</label>
+      <input type="text" id="location" formControlName="localizacao" class="form-control"
+        [class.is-invalid]="eventForm.get('localizacao')?.invalid && (eventForm.get('localizacao')?.dirty || eventForm.get('localizacao')?.touched)">
+      <div *ngIf="eventForm.get('localizacao')?.invalid && (eventForm.get('localizacao')?.dirty || eventForm.get('localizacao')?.touched)" class="invalid-feedback">
+        <div *ngIf="eventForm.get('localizacao')?.errors?.['required']">O local é obrigatório.</div>
+        <div *ngIf="eventForm.get('localizacao')?.errors?.['minlength']">O local deve ter no mínimo 5 caracteres.</div>
+        <div *ngIf="eventForm.get('localizacao')?.errors?.['maxlength']">O local deve ter no máximo 200 caracteres.</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!eventForm.valid">{{ isEditMode ? 'Salvar Alterações' : 'Criar Evento' }}</button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="router.navigate(['/events'])">Cancelar</button>
+  </form>
+</div>

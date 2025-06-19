@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <div *ngIf="event">
+    <h2>Detalhes do Evento: {{ event.titulo }}</h2>
+    <hr>
+    <p><strong>ID:</strong> {{ event.id }}</p>
+    <p><strong>Descrição:</strong> {{ event.descricao }}</p>
+    <p><strong>Data e Hora:</strong> {{ event.dataHora | date:'full' }}</p>
+    <p><strong>Local:</strong> {{ event.localizacao }}</p>
+    <p><strong>Status:</strong>
+      <span class="badge" [class.bg-success]="!event.apagado" [class.bg-danger]="event.apagado">
+        {{ event.apagado ? 'Apagado' : 'Ativo' }}
+      </span>
+    </p>
+
+    <div class="mt-4">
+      <a [routerLink]="['/events', event.id, 'edit']" class="btn btn-warning me-2">Editar</a>
+      <button (click)="softDeleteEvent()" class="btn btn-danger me-2" [disabled]="event.apagado">Apagar Evento</button>
+      <button (click)="router.navigate(['/events'])" class="btn btn-secondary">Voltar para a Lista</button>
+    </div>
+  </div>
+
+  <div *ngIf="!event" class="alert alert-warning">
+    Carregando detalhes do evento ou evento não encontrado.
+  </div>
+</div>
