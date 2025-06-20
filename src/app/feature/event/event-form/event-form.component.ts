@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EventService } from '../../services/event.service';
-import { Event } from '../../models/event.model';
+import { EventService } from '../../../core/services/event.service';
+import { Event } from '../../../core/models/event.model';
 import { DatePipe } from '@angular/common'; // Para formatar a data
 
 @Component({

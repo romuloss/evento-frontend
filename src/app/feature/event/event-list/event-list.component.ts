@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../services/event.service';
-import { Event, PaginatedResponse } from '../../models/event.model';
+import { EventService } from '../../../core/services/event.service';
+import { Event, PaginatedResponse } from '../../../core/models/event.model';
 import { first, delay } from 'rxjs';
 
 @Component({

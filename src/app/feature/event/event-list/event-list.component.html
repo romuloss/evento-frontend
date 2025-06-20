@@ -28,9 +28,10 @@
           <td>{{ event.dataHora | date:'short' }}</td>
           <td>{{ event.localizacao }}</td>
           <td>
-            <span class="badge" [class.bg-success]="!event.apagado" [class.bg-danger]="event.apagado">
+            <!-- <span class="badge" [class.bg-success]="!event.apagado" [class.bg-danger]="event.apagado">
               {{ event.apagado ? 'Apagado' : 'Ativo' }}
-            </span>
+            </span> -->
+            <app-registry-status [apagado]="event.apagado"></app-registry-status>
           </td>
           <td>
             <a [routerLink]="['/events', event.id]" class="btn btn-info btn-sm me-2">Ver</a>

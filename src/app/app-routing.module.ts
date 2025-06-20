@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EventListComponent } from './components/event-list/event-list.component';
-import { EventFormComponent } from './components/event-form/event-form.component';
-import { EventDetailsComponent } from './components/event-details/event-details.component';
+import { EventListComponent } from './feature/event/event-list/event-list.component';
+import { EventFormComponent } from './feature/event/event-form/event-form.component';
+import { EventDetailsComponent } from './feature/event/event-details/event-details.component';
 
 const routes: Routes = [
   { path: 'events', component: EventListComponent },

@@ -1,0 +1,3 @@
+<span *ngIf="apagado != undefined" class="badge" [class.bg-success]="!apagado" [class.bg-danger]="apagado">
+  {{ apagado ? 'Apagado' : 'Ativo' }}
+</span>
