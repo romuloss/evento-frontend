@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { Event, PaginatedResponse } from '../../models/event.model';
-import { take } from 'rxjs';
+import { first, delay } from 'rxjs';
 
 @Component({
   selector: 'app-event-list',
@@ -14,14 +14,16 @@ export class EventListComponent implements OnInit {
   pageSize = 10;
   totalPages = 0;
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService
+  ) { }
 
   ngOnInit(): void {
     this.loadEvents();
   }
 
   loadEvents(): void {
-    this.eventService.getAllEvents(this.currentPage, this.pageSize).pipe(take(1))
+
+    this.eventService.getAllEvents(this.currentPage, this.pageSize).pipe(first(), delay(500))
       .subscribe(
         (response: PaginatedResponse<Event>) => {
           this.events = response.content;
@@ -32,6 +34,7 @@ export class EventListComponent implements OnInit {
           console.error('Erro ao carregar eventos:', error);
         }
       );
+
   }
 
   softDeleteEvent(id: number | undefined): void {
