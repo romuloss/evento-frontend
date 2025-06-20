@@ -1,7 +1,9 @@
+import { Event } from './../models/event.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Event, PaginatedResponse } from '../models/event.model';
+import { PaginatedResponse } from '../models/event.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -41,3 +43,5 @@ export class EventService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
+
+

@@ -25,7 +25,8 @@
         <tr *ngFor="let event of events">
           <td>{{ event.id }}</td>
           <td>{{ event.titulo }}</td>
-          <td>{{ event.dataHora | date:'short' }}</td> <td>{{ event.localizacao }}</td>
+          <td>{{ event.dataHora | date:'short' }}</td>
+          <td>{{ event.localizacao }}</td>
           <td>
             <span class="badge" [class.bg-success]="!event.apagado" [class.bg-danger]="event.apagado">
               {{ event.apagado ? 'Apagado' : 'Ativo' }}
